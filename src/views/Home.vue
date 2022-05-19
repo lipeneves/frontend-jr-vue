@@ -3,10 +3,7 @@
 
     <!-- Barra de Busca -->
     <div class="busca_container">
-      <input type="text" v-model="text_search" placeholder="Digite aqui sua busca..." class="busca_input container">
-    </div>
-    <div>
-      <p>{{ text_search }}</p>
+      <input type="text" v-model="busca_input" placeholder="Digite aqui sua busca..." class="busca_input container">
     </div>
 
     <!-- Resultado da Busca -->
@@ -15,16 +12,46 @@
       <PrimaryButton :text_button="btn_novo" />
     </div>
     <div id="container_cards">
-      <p>Texto</p>
+      <p>{{ busca_input }}</p>
     </div>
+
+    <div class="container">
+      <Card />
+    </div>
+
+    <Modal v-if="mostrar_modal" />
 
   </div>
 </template>
 
 <script>
 
+import PrimaryButton from '../components/PrimaryButton.vue'
+import Card from '../components/Card.vue'
+import Modal from '@/components/Modal.vue'
+
 export default {
   name: "HomeView",
+
+  data() {
+    return {
+      busca_input: '',
+      btn_novo: 'Novo Card',
+      mostrar_modal: true,
+    }
+  },
+
+  components: {
+    PrimaryButton,
+    Card,
+    Modal
+  },
+
+  methods: {
+    toggleModal() {
+      this.mostrar_modal = !this.mostrar_modal;
+    }
+  }
 }
 </script>
 

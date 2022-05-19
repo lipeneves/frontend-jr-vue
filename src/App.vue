@@ -1,6 +1,6 @@
 <template>
 
-  <Header :logo_src='src' :app_name='alt'/>
+  <Header :logo_src='src' :app_name='alt' />
   <HomeView />
 
 </template>
@@ -9,12 +9,12 @@
 import Header from './components/Header.vue'
 import HomeView from './views/Home.vue'
 
-export default{
+export default {
   components: {
     Header, HomeView
   },
 
-  data(){
+  data() {
     return {
       src: '/img/logo.png',
       alt: 'Sensus Tecnologia'
@@ -24,20 +24,28 @@ export default{
 </script>
 
 <style>
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
 
-  body{
-    background: #f7eee9;
-  }
+body {
+  background: #f7eee9;
+}
 
-  .container{
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
 </style>
