@@ -37,7 +37,7 @@ export default {
     return {
       busca_input: '',
       btn_novo: 'Novo Card',
-      mostrar_modal: true,
+      mostrar_modal: false,
     }
   },
 

@@ -1,8 +1,8 @@
 <template>
   <div id="container_cards">
-    <div v-for="(item, index) in listPokes" :key="item.name" class="card">
+    <div v-for="(item) in listPokes" :key="item.name" class="card">
 
-      <img :src="`${baseURL}${(index + 1)}.png`" alt="" class="img_poke">
+      <img :src="item.imgUrl" alt="" class="img_poke">
       <h2 class="title_card">{{ item.name }}</h2>
       <ul class="btn_cards">
         <li>
@@ -19,26 +19,39 @@
 
 <script>
 import pokeApi from '../services/pokeapi-service';
+import axios from "axios";
 
 export default {
   name: 'Card',
   data() {
     return {
       title: 'Teste',
-      listPokes: [],
-      baseURL: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/heartgold-soulsilver/',
+      listPokes: []
     }
   },
 
   methods: {
+    async loadImage(element) {
+      return await axios.get(element.url).then(
+        (success) => {
+          return Promise.resolve(success.data.sprites.front_default)
+            .then((value) => {
+              element.imgUrl = value;
+              console.log(this.url);
+            });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+
     async load() {
       pokeApi.pokemon(0).then(
         (success) => {
           this.listPokes = success.data.results;
-          console.log(this.listPokes);
           this.listPokes.forEach(element => {
-
-
+            const imgUrl = this.loadImage(element)
           });
         },
         (error) => {

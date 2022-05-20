@@ -1,7 +1,8 @@
 import axios from "axios";
 
+
 const api = axios.create({
-  baseURL: "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0/"
+  baseURL: "https://pokeapi.co/api/v2/pokemon?limit=30&offset=0/"
 });
 
 export default api;
